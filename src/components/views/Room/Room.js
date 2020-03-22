@@ -4,7 +4,6 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 
 import PageTitle from '../../common/PageTitle/PageTitle';
 
-
 import { connect } from 'react-redux';
 import { getRoomById } from '../../../redux/roomsRedux.js';
 
@@ -29,7 +28,7 @@ const Component = ({ image, name, cost, person, difficulty, time, id, intro, des
               </div>
             </article>
           </Col>
-          <Col lg={10}>
+          <Col lg={7}>
             <article className={styles.description}>
               <h2>Co to za pokój?</h2>
               <span>{intro}</span>
@@ -37,13 +36,15 @@ const Component = ({ image, name, cost, person, difficulty, time, id, intro, des
               <span>{description}</span>
             </article>
           </Col>
-        </Row>
-      </Grid >
-      <Grid>
-        <Row>
-          <Col xs={12}>
+          <Col xs={2}>
             <PageTitle text='Kup voucher' />
-            {/* <OrderForm tripCost={cost} tripName={name} tripId={id} countryCode={country.alpha3Code} /> */}
+            <form>
+              <fieldset>
+                <span>podaj ilość: </span>
+                <input type='number' min='1' max='10' />
+                <input type="submit" value="Dodaj do koszyka"/>
+              </fieldset>
+            </form>
           </Col>
         </Row>
       </Grid>
@@ -55,7 +56,7 @@ Component.propTypes = {
   image: PropTypes.string,
   name: PropTypes.string,
   person: PropTypes.string,
-  cost: PropTypes.string,
+  cost: PropTypes.number,
   difficulty: PropTypes.string,
   time: PropTypes.string,
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

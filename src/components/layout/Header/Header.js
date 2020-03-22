@@ -36,7 +36,7 @@ class Component extends React.Component {
               <nav>
                 <NavLink to='/rooms' activeClassName='active'>Pokoje</NavLink>
                 <NavLink to='/costs' activeClassName='active'>Cennik</NavLink>
-                <NavLink to='/vouchers' activeClassName='active'>Vouchery</NavLink>
+                <NavLink to='/regulations' activeClassName='active'>Regulamin</NavLink>
                 <NavLink to='/info' activeClassName='active'>Kontakt</NavLink>
               </nav>
             </Col>

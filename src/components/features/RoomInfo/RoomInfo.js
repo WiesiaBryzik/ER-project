@@ -14,7 +14,7 @@ const RoomInfo = ({ id, image, name, cost, person, difficulty, time }) => (
           <span>{person} osób</span>
           <span>trudność: {difficulty}</span>
           <span>{time} min</span>
-          <span> {cost}zł</span>
+          <span> {cost}zł </span>
         </div>
       </article>
     </Link>
@@ -26,7 +26,7 @@ RoomInfo.propTypes = {
   image: PropTypes.string,
   name: PropTypes.string,
   person: PropTypes.string,
-  cost: PropTypes.string,
+  cost: PropTypes.number,
   difficulty: PropTypes.string,
   time: PropTypes.string,
 };

@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Header} from '../Header/Header';
 
 import clsx from 'clsx';
 
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
-import styles from './MainLayout.module.scss';
+import styles from './Info.module.scss';
 
 const Component = ({className, children}) => (
   <div className={clsx(className, styles.root)}>
-    <Header />
+    <h2>Info</h2>
+    <p> Budujemy tę stronę dla Ciebie! Wróć za jakiś czas. </p>
     {children}
   </div>
 );
@@ -32,7 +32,7 @@ Component.propTypes = {
 // const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  Component as MainLayout,
-  // Container as MainLayout,
-  Component as MainLayoutComponent,
+  Component as Info,
+  // Container as Info,
+  Component as InfoComponent,
 };

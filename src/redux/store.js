@@ -2,12 +2,17 @@ import {combineReducers, createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { initialState } from './initialState';
-import { reducer as postsReducer } from './postsRedux';
+import roomsReducer from './roomsRedux';
+
+import roomList from '../data/rooms.json';
+
+export const initialState = {
+  rooms: roomList,
+};
 
 // define reducers
 const reducers = {
-  posts: postsReducer,
+  rooms: roomsReducer,
 };
 
 // add blank reducers for initial state properties without reducers

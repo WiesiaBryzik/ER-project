@@ -1,4 +1,71 @@
 @import '../../../styles/settings.scss';
 
 // .root {
+//   background: white;
+
 // }
+
+
+.component {
+  background: $color-main;
+  padding: ($base-size * 1.5) 0;
+  color: $color-light;
+
+  nav {
+    font-size: ($base-size * 1.7);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    a {
+      color: $color-light;
+      margin-right: ($base-size * 3);
+      padding-bottom: ($base-size / 2);
+      &:last-of-type {
+        margin-right: 0;
+      }
+      &:hover {
+        font-weight: bold;
+      }
+      &:global(.active) {
+        border-bottom: 4px solid $color-main;
+      }
+    }
+
+  }
+
+}
+
+.name {
+  color: $color-light;
+  position: relative;
+  top: ($base-size / -4);
+  left: $base-size;
+  font-family: $font-header;
+  font-size: ($base-size * 2);
+}
+
+.cart {
+  text-align: right;
+  span {
+    padding-left: $base-size;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .component  {
+    text-align: center;
+
+    nav {
+      margin-top: ($base-size * 1.5);
+    }
+
+  }
+
+  .contact {
+    text-align: center;
+    margin-top: ($base-size * 1.5);
+  }
+
+}

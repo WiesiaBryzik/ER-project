@@ -1,1 +1,23 @@
+$color-light: #fff;
+$color-dark: #000;
+$color-background: #c8d6e5;
+$color-main: #601030;
+$color-secondary: pink;
+$color-success: rgb(69, 180, 25);
+$color-failed: rgb(187, 78, 5);
+$color-failed: rgb(187, 78, 5);
+
+
+$font-header: 'Montserrat', sans-serif;
+$font-text: 'Source Sans Pro', sans-serif;
+
+$radius: 5px;
 $base-size: 12px;
+$transition: all 0.5s;
+
+@mixin p-el($element) {
+  &:#{$element}, &::#{$element} {
+    position: absolute;
+    @content;
+  }
+}

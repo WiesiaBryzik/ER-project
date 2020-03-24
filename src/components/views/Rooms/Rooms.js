@@ -9,19 +9,23 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import { connect } from 'react-redux';
 import { getAllRooms } from '../../../redux/roomsRedux.js';
 
-// import styles from './Rooms.module.scss';
+import styles from './Rooms.module.scss';
 
 const Component = ({ rooms }) => (
   <Grid>
     <Row>
       <Col xs={12}>
         <PageTitle text='Nasze pokoje' />
-        <Row>
-          { rooms.map(room => (
-            <RoomInfo key={room.id} {...room} />
-          ))}
-        </Row>
       </Col>
+    </Row>
+    <Row>
+
+      {rooms.map(room => (
+        <Col key={room.id} xs={12} sm={6} lg={2} className={styles.column}>
+          <RoomInfo key={room.id} {...room} />
+        </Col>
+
+      ))}
     </Row>
   </Grid>
 
@@ -41,7 +45,7 @@ const mapStateToProps = state => ({
 //   someAction: arg => dispatch(reduxActionCreator(arg)),
 // });
 
-const Container = connect(mapStateToProps )(Component);
+const Container = connect(mapStateToProps)(Component);
 
 export {
   // Component as Rooms,

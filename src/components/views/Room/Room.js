@@ -3,32 +3,34 @@ import PropTypes from 'prop-types';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
 import PageTitle from '../../common/PageTitle/PageTitle';
+import RoomInfo from '../../features/RoomInfo/RoomInfo';
 
 import { connect } from 'react-redux';
 import { getRoomById } from '../../../redux/roomsRedux.js';
 
 
 import styles from './Room.module.scss';
+import { Carousel } from '../../features/Carousel/Carousel';
 
-const Component = ({ image, name, cost, person, difficulty, time, id, intro, description }) => {
+const Component = ({ room, name, intro, description, record }) => {
   return (
     <section>
       <Grid>
-        <PageTitle text={name} />
         <Row>
-          <Col xs={12} sm={6} lg={2} className={styles.column}>
-            <article className={styles.component}>
-              <img src={image} alt={name} />
-              <h3 className={styles.title}>{name}</h3>
-              <div className={styles.details}>
-                <span>{person} osób</span>
-                <span>trudność: {difficulty}</span>
-                <span>{time} min</span>
-                <span> {cost}zł</span>
-              </div>
-            </article>
+          <Col xs={12} sm={6} lg={2} >
           </Col>
-          <Col lg={7}>
+          <Col lg={8} className={styles.container}>
+            <div className={styles.title}>
+              <PageTitle text={name} />
+            </div>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col xs={12} sm={6} lg={2}>
+            <RoomInfo key={room.id} {...room} />
+          </Col>
+          <Col lg={8}>
             <article className={styles.description}>
               <h2>Co to za pokój?</h2>
               <span>{intro}</span>
@@ -36,32 +38,46 @@ const Component = ({ image, name, cost, person, difficulty, time, id, intro, des
               <span>{description}</span>
             </article>
           </Col>
-          <Col xs={2}>
-            <PageTitle text='Kup voucher' />
-            <form>
-              <fieldset>
-                <span>podaj ilość: </span>
-                <input type='number' min='1' max='10' />
-                <input type="submit" value="Dodaj do koszyka"/>
-              </fieldset>
-            </form>
+          <Col className={styles.sticky} xs={12} lg={2} >
+            <PageTitle text='Kup voucher na ten pokój' />
+            <article className={styles.voucher}>
+              <form>
+                <fieldset>
+                  <span>podaj ilość: </span>
+                  <input type='number' min='1' max='10' />
+                  <input type="submit" value="Dodaj do koszyka" />
+                </fieldset>
+              </form>
+              <p className={styles.voucherText}>Po zakupie vouchera prosimy o kontakt telefoniczny w celu dokonania rezerwacji.</p>
+            </article>
+          </Col>
+          {/* </Row> */}
+          {/* <Row> */}
+          <Col xs={12} sm={6} lg={2}>
+            <PageTitle text='Rekord' />
+            <span> Rekord w pokoju to: </span>
+            <p className={styles.record}>{record} min </p>
+            <span> Rekord w pokoju liczymy bez podpowiedzi.</span>
+          </Col>
+          <Col className={styles.carousel} xs={12} sm={6} lg={8} >
+            <Carousel {...room} />
+          </Col>
+          <Col xs={12} sm={6} lg={2} >
           </Col>
         </Row>
       </Grid>
+
     </section>
   );
 };
 
 Component.propTypes = {
-  image: PropTypes.string,
   name: PropTypes.string,
-  person: PropTypes.string,
-  cost: PropTypes.number,
-  difficulty: PropTypes.string,
-  time: PropTypes.string,
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   intro: PropTypes.string,
   description: PropTypes.string,
+  room: PropTypes.string,
+  record: PropTypes.number,
 };
 
 const mapStateToProps = (state, props) => {
@@ -69,6 +85,7 @@ const mapStateToProps = (state, props) => {
 
   return {
     ...room,
+    room,
   };
 };
 

@@ -3,16 +3,20 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import roomsReducer from './roomsRedux';
+import roomReducer from './roomsRedux';
 
 import roomList from '../data/rooms.json';
 
 export const initialState = {
   rooms: roomList,
+  room: roomList,
+  cart: [],
 };
 
 // define reducers
 const reducers = {
   rooms: roomsReducer,
+  room: roomReducer,
 };
 
 // add blank reducers for initial state properties without reducers
@@ -32,3 +36,5 @@ export const store = createStore(
     applyMiddleware(thunk)
   )
 );
+
+export default store;

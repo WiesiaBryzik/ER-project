@@ -42,7 +42,7 @@ class Component extends React.Component {
             </Col>
             <Col md={3} lg={2}>
               <nav className={styles.cart}>
-                <NavLink to='/cart' activeClassName='active'>Cart</NavLink>
+                <NavLink to='/cart' activeClassName='active'>Koszyk</NavLink>
               </nav>
             </Col>
           </Row>

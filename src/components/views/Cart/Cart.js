@@ -1,23 +1,48 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
-import clsx from 'clsx';
+import PageTitle from '../../common/PageTitle/PageTitle';
 
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
 import styles from './Cart.module.scss';
 
-const Component = ({className, children}) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>Cart</h2>
-    {children}
-  </div>
+const Component = ({ name }) => (
+  <Grid>
+    <Row>
+      <Col xs={12} sm={6} lg={8} >
+        <PageTitle text='Koszyk' />
+        <div className={styles.cart}>
+          <table>
+            <td>
+              <tr>Nazwa produktu</tr>
+              <tr>name {name}</tr>
+            </td>
+            <td>
+              <tr> Cena</tr>
+              <tr> 123zł</tr>
+            </td>
+            <td>
+              <tr> Ilość</tr>
+              <tr> 3szt</tr>
+            </td>
+            <td>
+              <tr>Suma</tr>
+              <tr>Ilość x cena</tr>
+            </td>
+          </table>
+        </div>
+      </Col>
+    </Row>
+  </Grid>
+
+
 );
 
 Component.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
+  name: PropTypes.string,
 };
 
 // const mapStateToProps = state => ({

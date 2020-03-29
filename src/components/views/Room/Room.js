@@ -6,13 +6,11 @@ import PageTitle from '../../common/PageTitle/PageTitle';
 import RoomInfo from '../../features/RoomInfo/RoomInfo';
 
 import { connect } from 'react-redux';
-import { getRoomById } from '../../../redux/roomsRedux.js';
-// import { createAction_addQuantity } from '../../../redux/roomRedux';
+import { getRoomById, loadRoomsRequest, getRequest } from '../../../redux/roomRedux.js';
 
 
 import styles from './Room.module.scss';
 import { Carousel } from '../../features/Carousel/Carousel';
-// import { AddToCart } from '../../features/AddToCart/AddToCart';
 
 class Component extends React.Component {
 
@@ -26,7 +24,7 @@ class Component extends React.Component {
   }
 
   render() {
-    const { name, id, intro, description, room, record } = this.props;
+    const { name, intro, description, room, record } = this.props;
     return (
       <section>
         <Grid>
@@ -84,18 +82,14 @@ class Component extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
-  const room = getRoomById(state, props.match.url.slice(6));
+const mapStateToProps = state => ({
+  rooms: getRoomById(state),
+  request: getRequest(state),
 
-  return {
-    ...room,
-    room,
-  };
-};
+});
 
-const mapDispatchToProps = (dispatch, props) => ({
-  addQuantity: (roomId, quantity) => dispatch(createAction_addQuantity(roomId, quantity,
-  )),
+const mapDispatchToProps = (dispatch) => ({
+  loadRooms: (id) => dispatch(loadRoomsRequest(id)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

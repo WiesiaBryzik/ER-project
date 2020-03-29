@@ -1,39 +1,18 @@
-import {combineReducers, createStore, applyMiddleware} from 'redux';
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
+// import { composeWithDevTools } from 'redux-devtools-extension';
 
-import roomsReducer from './roomsRedux';
-import roomReducer from './roomsRedux';
+import rooms from './roomRedux';
 
-import roomList from '../data/rooms.json';
-
-export const initialState = {
-  rooms: roomList,
-  room: roomList,
-  cart: [],
-};
-
-// define reducers
-const reducers = {
-  rooms: roomsReducer,
-  room: roomReducer,
-};
-
-// add blank reducers for initial state properties without reducers
-Object.keys(initialState).forEach(item => {
-  if (typeof reducers[item] == 'undefined') {
-    reducers[item] = (statePart = null) => statePart;
-  }
+const rootReducer = combineReducers({
+  rooms,
 });
 
-const combinedReducers = combineReducers(reducers);
-
-// create store
-export const store = createStore(
-  combinedReducers,
-  initialState,
-  composeWithDevTools(
-    applyMiddleware(thunk)
+const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 

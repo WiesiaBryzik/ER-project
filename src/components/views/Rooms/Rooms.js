@@ -7,45 +7,65 @@ import RoomInfo from '../../features/RoomInfo/RoomInfo';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
 import { connect } from 'react-redux';
-import { getAllRooms } from '../../../redux/roomsRedux.js';
+import { getAllRooms, loadRoomsRequest, getRequest } from '../../../redux/roomRedux.js';
 
 import styles from './Rooms.module.scss';
 
-const Component = ({ rooms }) => (
-  <Grid>
-    <Row>
-      <Col xs={12}>
-        <PageTitle text='Nasze pokoje' />
-      </Col>
-    </Row>
-    <Row>
+class Component extends React.Component {
 
-      {rooms.map(room => (
-        <Col key={room.id} xs={12} sm={6} lg={2} className={styles.column}>
-          <RoomInfo key={room.id} {...room} />
-        </Col>
+  componentDidMount() {
+    const { loadRooms } = this.props;
+    loadRooms();
+  }
 
-      ))}
-    </Row>
-  </Grid>
+  render() {
+    const { rooms } = this.props;
+    return (
+      <Grid>
+        <Row>
+          <Col xs={12}>
+            <PageTitle text='Nasze pokoje' />
+          </Col>
 
-);
+
+          {rooms.map(room => (
+            <Col key={room.id} xs={12} sm={6} lg={2} className={styles.column}>
+              <RoomInfo key={room.id} {...room} />
+            </Col>
+
+          ))}
+        </Row>
+      </Grid>
+    );
+  }
+}
 
 Component.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  rooms: PropTypes.array,
+  rooms: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      cost: PropTypes.number.isRequired,
+      time: PropTypes.string.isRequired,
+      person: PropTypes.string.isRequired,
+      difficulty: PropTypes.string.isRequired,
+    }),
+  ),
+  loadRooms: PropTypes.func.isRequired,
 };
+
 
 const mapStateToProps = state => ({
   rooms: getAllRooms(state),
+  request: getRequest(state),
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = dispatch => ({
+  loadRooms: () => dispatch(loadRoomsRequest()),
+});
 
-const Container = connect(mapStateToProps)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   // Component as Rooms,

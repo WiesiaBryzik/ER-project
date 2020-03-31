@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { API_URL } from '../config';
+import { BASE_URL } from '../config';
+
 /* SELECTORS */
 
 export const getAllRooms = ({ rooms }) => rooms.data;
@@ -38,7 +40,7 @@ export const loadRoomsRequest = () => {
     dispatch(startRequest());
     try {
 
-      let res = await axios.get(`${API_URL}/rooms`);
+      let res = await axios.get(`${BASE_URL}${API_URL}/rooms`);
       dispatch(loadRooms(res.data));
       dispatch(endRequest());
 
@@ -55,7 +57,7 @@ export const loadRoomRequest = (id) => {
     dispatch(startRequest());
     try {
 
-      let res = await axios.get(`${API_URL}/room/${id}`);
+      let res = await axios.get(`${BASE_URL}${API_URL}/room/${id}`);
       dispatch(loadRoom(res.data));
       dispatch(endRequest());
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import RoomInfo from '../RoomInfo/RoomInfo';
 import { Row, Col } from 'react-flexbox-grid';
 import styles from './RoomsList.module.scss';
@@ -11,7 +11,7 @@ const RoomsList = ({ rooms }) => (
     {rooms.map(room => (
       <Col key={rooms.id} xs={12} sm={6} lg={2} className={styles.column}>
 
-        <RoomInfo key={room.id} {...room} />
+        <RoomInfo {...room} />
       </Col>
 
     ))

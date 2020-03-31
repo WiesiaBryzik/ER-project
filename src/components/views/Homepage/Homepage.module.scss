@@ -1,15 +1,20 @@
 @import '../../../styles/settings.scss';
 
 .root {
-  p {
+  background-color: $color-main;
+
+  .text {
     font-size: ($base-size * 2);
     font-weight: bold;
+    color: $color-secondary;
+    background-color: $color-dark;
+    opacity:0.8;
+    text-align: center;
+    padding: 10%;
+    border-radius: 15%;
   }
-
-  span {
-    font-weight: bold;
-    font-size: ($base-size * 2);
-
+  .column {
+    margin-left: 100px;
   }
 }
 .component {
@@ -50,3 +55,4 @@
   object-fit: cover;
   object-position: 0 10%;
 }
+

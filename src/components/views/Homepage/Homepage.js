@@ -18,11 +18,11 @@ const Component = ({ className, children }) => (
     </div>
     <Grid>
       <Row between="md" middle="xs">
-        <Col md={3} lg={5}>
-          <p> Escape Room to rozrywka dla każdego! Spróbuj i Ty!  <br/>Wskocz w sam środek przygody, która wciągnie Cię na całego!  <br/> Zagarnij grupę znajomych i zmierz się ze swoimi ograniczeniami!</p>
+        <Col md={3} lg={5} className={styles.column}>
+          <p className={styles.text}> Escape Room to rozrywka dla każdego! Spróbuj i Ty!  <br/>Wskocz w sam środek przygody, która wciągnie Cię na całego!  <br/> Zagarnij grupę znajomych i zmierz się ze swoimi ograniczeniami!</p>
         </Col>
         <Col md={3} lg={5}>
-          <span> Zagadki, zagadki, wszędzie zagadki! <br/> Szukaj i znajduj! <br/> Myśl i wpadaj na pomysły! <br/>Rozwiązuj i próbuj!</span>
+          <p className={styles.text}> Zagadki, zagadki, wszędzie zagadki! <br/> Szukaj i znajduj! <br/> Myśl i wpadaj na pomysły! <br/>Rozwiązuj i próbuj!</p>
         </Col>
       </Row>
     </Grid>{children}

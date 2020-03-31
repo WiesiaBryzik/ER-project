@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Header} from '../Header/Header';
+
+import { Header } from '../Header/Header';
 
 import clsx from 'clsx';
 
@@ -9,7 +10,7 @@ import clsx from 'clsx';
 
 import styles from './MainLayout.module.scss';
 
-const Component = ({className, children}) => (
+const Component = ({ className, children }) => (
   <div className={clsx(className, styles.root)}>
     <Header />
     {children}

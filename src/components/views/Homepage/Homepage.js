@@ -12,7 +12,6 @@ import styles from './Homepage.module.scss';
 
 const Component = ({ className, children }) => (
   <div className={clsx(className, styles.root)}>
-    {/* <h2>Escape Room</h2> */}
     <div className={styles.component}>
       <img alt='tytuł obrazka' className={styles.image} src='https://images.pexels.com/photos/2422290/pexels-photo-2422290.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' />
       <span>Jesteśmy tu dla Was!</span>

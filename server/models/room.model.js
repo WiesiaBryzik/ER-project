@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-const Rooms = new mongoose.Schema({
-  _id: { type: 'String', required: true },
+const Room = new mongoose.Schema({
   id: { type: 'String', required: true },
   name: { type: 'String', required: true },
   person: { type: 'String', required: true },
@@ -18,4 +17,4 @@ const Rooms = new mongoose.Schema({
   quantity: { type: 'Number', required: true },
 });
 
-module.exports = mongoose.model('Rooms', Rooms);
+module.exports = mongoose.model('Room', Room);

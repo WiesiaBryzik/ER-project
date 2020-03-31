@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const config = require('./config');
 
 const roomRoutes = require('./routes/room.routes');
 
@@ -21,8 +22,8 @@ app.use((req, res) => {
   res.status(404).send({ message: 'Not found...' });
 });
 
-mongoose.connect('mongodb://localhost:27017/erDB', { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection;
+mongoose.connect(config.DB, { useNewUrlParser: true, useUnifiedTopology: true });
+let db = mongoose.connection;
 
 
 db.once('open', () => {
@@ -31,6 +32,6 @@ db.once('open', () => {
 db.on('error', err => console.log('Error ' + err));
 
 
-app.listen('8000', () => {
-  console.log('Server is running on port: 8000');
+app.listen(process.env.PORT || 8000, () => {
+  console.log(`Server is running on port: `, config.DB);
 });

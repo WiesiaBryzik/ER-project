@@ -4,9 +4,7 @@ import thunk from 'redux-thunk';
 
 import rooms from './roomRedux';
 
-const rootReducer = combineReducers({
-  rooms,
-});
+const rootReducer = combineReducers({ rooms });
 
 const store = createStore(
   rootReducer,

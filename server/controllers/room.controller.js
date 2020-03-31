@@ -1,9 +1,9 @@
-const Rooms = require('../models/room.model');
+const Room = require('../models/room.model');
 
-exports.getAllRooms = async (req, res) => {
+exports.getRooms = async (req, res) => {
 
   try {
-    res.status(200).json(await Rooms.find());
+    res.status(200).json(await Room.find());
   } catch (error) {
     res.status(500).json(error);
   }
@@ -12,7 +12,7 @@ exports.getAllRooms = async (req, res) => {
 exports.getRoomById = async (req, res) => {
 
   try {
-    res.status(200).json(await Rooms.find({ id: req.params.id }));
+    res.status(200).json(await Room.find({ id: req.params.id }));
   } catch (err) {
     res.status(500).json(err);
   }
